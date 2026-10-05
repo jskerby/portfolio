@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found — John Kerby S. Banatlao</title>
+  <meta name="robots" content="noindex">
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('jkb-portfolio-theme');
+        if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (err) { /* storage unavailable, ignore */ }
+    })();
+  </script>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=11">
+  <style>
+    .not-found {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      gap: 18px;
+    }
+    .not-found i { font-size: 3rem; color: var(--color-accent-dark); }
+    .not-found h1 { font-size: var(--fs-3xl); margin: 0; }
+    .not-found p { max-width: 46ch; }
+  </style>
+</head>
+<body>
+  <div class="not-found">
+    <i class="ph ph-compass" aria-hidden="true"></i>
+    <h1>Page not found</h1>
+    <p>Whatever you were looking for isn't here — but the rest of the portfolio is.</p>
+    <a class="btn btn--primary" href="index.html">Back to home</a>
+  </div>
+</body>
+</html>

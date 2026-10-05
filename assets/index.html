@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    // Set the theme before first paint, so a returning dark-mode visitor
+    // doesn't see a flash of the light theme while the page loads.
+    (function () {
+      try {
+        var saved = localStorage.getItem('jkb-portfolio-theme');
+        if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (err) { /* storage unavailable, ignore */ }
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ===== SEO ===== -->
+  <title>John Kerby S. Banatlao — Web Developer &amp; Automation Builder | GHL, n8n &amp; AI Systems</title>
+  <meta name="description" content="John Kerby S. Banatlao is a web developer bridging technical drafting and automation — building websites, GoHighLevel workflows, n8n pipelines, and AI-agent tooling that keep running after launch.">
+  <meta name="keywords" content="web developer, GoHighLevel automation, n8n workflows, AI agent builder, AutoCAD, SketchUp, freelance developer">
+  <meta name="author" content="John Kerby S. Banatlao">
+  <link rel="canonical" href="https://your-domain.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Websites, GoHighLevel workflows, n8n pipelines and AI-agent builds — drafted with precision, built to run on their own.">
+  <meta property="og:url" content="https://your-domain.com/">
+  <meta property="og:image" content="https://your-domain.com/assets/og-cover.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:description" content="Websites, GoHighLevel workflows, n8n pipelines and AI-agent builds — drafted with precision, built to run on their own.">
+
+  <!-- Structured data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "John Kerby S. Banatlao",
+    "url": "https://your-domain.com/",
+    "sameAs": [
+      "https://www.linkedin.com/in/john-kerby-banatlao-8a6b35388/",
+      "https://www.facebook.com/johnkerby.silva.1",
+      "https://github.com/jskerby"
+    ],
+    "knowsAbout": ["GoHighLevel", "n8n", "AI Agents", "Web Development", "AutoCAD", "SketchUp"]
+  }
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+
+  <!-- Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
+
+  <link rel="stylesheet" href="css/style.css?v=22">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===================== SIDEBAR NAVIGATION ===================== -->
+  <header class="sidebar" id="sidebar">
+    <div class="sidebar__top">
+      <div class="sidebar__top-row">
+        <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="navList" aria-label="Open navigation menu">
+          <i class="ph ph-list" aria-hidden="true"></i>
+        </button>
+
+        <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Turn on dark mode">
+          <i class="ph ph-moon" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div class="profile">
+        <div class="profile__avatar-wrap">
+          <div class="profile__avatar">
+            <img src="assets/profile.jpg" alt="John Kerby S. Banatlao">
+          </div>
+        </div>
+        <p class="profile__name">
+          John Kerby S. Banatlao
+          <i class="ph-fill ph-seal-check profile__badge" aria-label="Verified"></i>
+        </p>
+        <p class="profile__role">Web Developer &amp; Automation Builder</p>
+
+        <ul class="profile__socials" aria-label="Social links">
+          <li><a href="https://www.linkedin.com/in/john-kerby-banatlao-8a6b35388/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a></li>
+          <li><a href="https://github.com/jskerby" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="ph ph-github-logo" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.facebook.com/johnkerby.silva.1" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a></li>
+          <li><a href="mailto:kerbysilva163@gmail.com" aria-label="Email John Kerby"><i class="ph ph-envelope-simple" aria-hidden="true"></i></a></li>
+          <li><a href="tel:+639216432444" aria-label="Call John Kerby"><i class="ph ph-phone" aria-hidden="true"></i></a></li>
+        </ul>
+
+        <a class="profile__cv" href="assets/John-Kerby-Banatlao-Resume.pdf" target="_blank" rel="noopener noreferrer">
+          <i class="ph ph-file-pdf" aria-hidden="true"></i> View my CV
+        </a>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <ul id="navList">
+        <li><a href="#home" class="nav__link is-active" data-section="home"><i class="ph ph-house" aria-hidden="true"></i><span>Home</span></a></li>
+        <li><a href="#projects" class="nav__link" data-section="projects"><i class="ph ph-folder-simple" aria-hidden="true"></i><span>Projects</span></a></li>
+        <li><a href="#services" class="nav__link" data-section="services"><i class="ph ph-wrench" aria-hidden="true"></i><span>Services</span></a></li>
+        <li><a href="#about" class="nav__link" data-section="about"><i class="ph ph-user" aria-hidden="true"></i><span>About</span></a></li>
+        <li><a href="#contact" class="nav__link js-open-contact" data-section="contact"><i class="ph ph-envelope-simple" aria-hidden="true"></i><span>Contact</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar__bottom">
+      <div class="a11y-controls" role="group" aria-label="Text size controls">
+        <span class="a11y-controls__label"><i class="ph ph-text-aa" aria-hidden="true"></i> Text size</span>
+        <button type="button" id="fontDown" aria-label="Decrease text size">A-</button>
+        <button type="button" id="fontReset" aria-label="Reset text size">A</button>
+        <button type="button" id="fontUp" aria-label="Increase text size">A+</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+
+  <!-- ===================== MAIN CONTENT ===================== -->
+  <main id="main">
+
+    <!-- ---------- HOME / HERO ---------- -->
+    <section id="home" class="section hero" aria-labelledby="hero-heading">
+      <div class="hero__grid" aria-hidden="true"></div>
+
+      <p class="hero__eyebrow">Currently deep in GoHighLevel, n8n, Codex &amp; Claude</p>
+      <h1 id="hero-heading" class="hero__title">I draft the plan, then I build the system that runs it.</h1>
+      <p class="hero__lede">
+        A Computer Engineering graduate who turned years of classroom learning, leadership, and hands-on OJT experience into practical technical skills. From web development and technical drafting with AutoCAD and SketchUp to electrical systems, fieldwork, and troubleshooting, I've learned to approach technology through both creativity and problem-solving. Today, I'm focused on growing as a developer and building meaningful digital solutions.
+      </p>
+
+      <div class="hero__actions">
+        <a class="btn btn--primary js-open-contact" href="#contact">Get in touch</a>
+        <a class="btn btn--ghost" href="#projects">See the work</a>
+        <a class="btn btn--ghost" href="assets/John-Kerby-Banatlao-Resume.pdf" target="_blank" rel="noopener noreferrer"><i class="ph ph-file-pdf" aria-hidden="true"></i> Click to see my CV</a>
+      </div>
+
+      <div class="marquee" aria-label="Tools I work with">
+        <p class="marquee__label">Tools I work with</p>
+        <div class="marquee__track">
+          <ul class="marquee__list" aria-hidden="false">
+            <li class="tool tool--ghl"><i class="ph ph-flag-checkered" aria-hidden="true"></i> GoHighLevel</li>
+            <li class="tool tool--n8n"><i class="ph ph-flow-arrow" aria-hidden="true"></i> n8n</li>
+            <li class="tool tool--codex"><i class="ph ph-terminal-window" aria-hidden="true"></i> Codex</li>
+            <li class="tool tool--claude"><i class="ph ph-sparkle" aria-hidden="true"></i> Claude</li>
+            <li class="tool tool--autocad"><i class="ph ph-ruler" aria-hidden="true"></i> AutoCAD</li>
+            <li class="tool tool--sketchup"><i class="ph ph-cube" aria-hidden="true"></i> SketchUp</li>
+          </ul>
+          <ul class="marquee__list" aria-hidden="true">
+            <li class="tool tool--ghl"><i class="ph ph-flag-checkered" aria-hidden="true"></i> GoHighLevel</li>
+            <li class="tool tool--n8n"><i class="ph ph-flow-arrow" aria-hidden="true"></i> n8n</li>
+            <li class="tool tool--codex"><i class="ph ph-terminal-window" aria-hidden="true"></i> Codex</li>
+            <li class="tool tool--claude"><i class="ph ph-sparkle" aria-hidden="true"></i> Claude</li>
+            <li class="tool tool--autocad"><i class="ph ph-ruler" aria-hidden="true"></i> AutoCAD</li>
+            <li class="tool tool--sketchup"><i class="ph ph-cube" aria-hidden="true"></i> SketchUp</li>
+          </ul>
+        </div>
+      </div>
+
+      <a class="hero__scroll-cue" href="#projects" aria-label="Scroll down to projects">
+        <i class="ph ph-caret-down" aria-hidden="true"></i>
+      </a>
+    </section>
+
+    <!-- ---------- PROJECTS ---------- -->
+    <section id="projects" class="section" aria-labelledby="projects-heading">
+      <p class="section__kicker">Projects</p>
+      <h2 id="projects-heading" class="section__title">Selected work</h2>
+      <p class="section__intro">A mix of client, employer and personal work — real builds first, one still in progress.</p>
+
+      <div class="card-grid">
+        <article class="project-card project-card--combo">
+          <p class="combo__eyebrow"><i class="ph ph-code" aria-hidden="true"></i> Web Works <span class="combo__count" data-combo-count>1 / 2</span></p>
+          <div class="combo" data-combo>
+            <div class="combo__viewport">
+              <div class="combo__slide is-active" data-slide>
+                <div class="project-card__thumb project-card__thumb--logo" aria-hidden="true"><img src="assets/cafe-adc-logo.png" alt=""></div>
+                <h3>Cafe By ADC | All Day Coffee</h3>
+                <p>A coffee shop site with a starred best-seller menu and a built-in ordering flow that supports GCash and cash pickup — coffee, matcha and pasta, served digitally with a smile.</p>
+                <ul class="tag-list">
+                  <li>Web Development</li><li>SEO</li>
+                </ul>
+                <a class="project-card__link" href="https://all-day-coffee-adc-gkoi.vercel.app/" target="_blank" rel="noopener noreferrer">Visit live site <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+              </div>
+              <div class="combo__slide" data-slide>
+                <div class="project-card__thumb" aria-hidden="true"><i class="ph ph-buildings"></i></div>
+                <h3>FTR Electro Techserve OPC</h3>
+                <p>Web Design &amp; Web Developer role, Sto. Tomas, Batangas. Built and maintained the company website, improving its online presence and making it easier for clients to find information and get in touch — alongside technical drawings and design plans in AutoCAD and SketchUp supporting live project development.</p>
+                <ul class="tag-list">
+                  <li>Web Development</li><li>AutoCAD</li><li>SketchUp</li>
+                </ul>
+                <span class="project-card__status"><i class="ph ph-briefcase" aria-hidden="true"></i> Professional experience</span>
+              </div>
+            </div>
+            <div class="combo__controls">
+              <button type="button" class="combo__nav combo__nav--prev" aria-label="Previous project"><i class="ph ph-caret-left" aria-hidden="true"></i></button>
+              <div class="combo__dots" role="tablist" aria-label="Choose a project">
+                <button type="button" class="combo__dot is-active" role="tab" aria-selected="true" aria-label="Cafe By ADC"></button>
+                <button type="button" class="combo__dot" role="tab" aria-selected="false" aria-label="FTR Electro Techserve"></button>
+              </div>
+              <button type="button" class="combo__nav combo__nav--next" aria-label="Next project"><i class="ph ph-caret-right" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card project-card--gallery">
+          <div class="gallery" data-gallery>
+            <div class="gallery__frame" role="button" tabindex="0" aria-label="Dream House gallery — showing 4 Room. Activate to view it full-size.">
+              <img src="assets/projects/dream-house/01-four-room-plans.jpg" alt="Floor plans for the living room, bathroom, bedroom, kitchen and dining area" class="gallery__img is-active" data-caption="4 Room">
+              <img src="assets/projects/dream-house/02-living-room-plan.jpg" alt="Full ground-floor plan showing the kitchen, dining and living room layout" class="gallery__img" data-caption="Living Room">
+              <img src="assets/projects/dream-house/03-extras.jpg" alt="Stair, garage and floor-finish detail drawings" class="gallery__img" data-caption="Extras">
+              <img src="assets/projects/dream-house/04-front-view.jpg" alt="Rendered front elevation of the house" class="gallery__img" data-caption="Front View">
+              <span class="gallery__caption">4 Room</span>
+            </div>
+            <button type="button" class="gallery__nav gallery__nav--prev" aria-label="Previous image"><i class="ph ph-caret-left" aria-hidden="true"></i></button>
+            <button type="button" class="gallery__nav gallery__nav--next" aria-label="Next image"><i class="ph ph-caret-right" aria-hidden="true"></i></button>
+            <div class="gallery__dots" role="tablist" aria-label="Choose an image">
+              <button type="button" class="gallery__dot is-active" role="tab" aria-selected="true" aria-label="4 Room"></button>
+              <button type="button" class="gallery__dot" role="tab" aria-selected="false" aria-label="Living Room"></button>
+              <button type="button" class="gallery__dot" role="tab" aria-selected="false" aria-label="Extras"></button>
+              <button type="button" class="gallery__dot" role="tab" aria-selected="false" aria-label="Front View"></button>
+            </div>
+          </div>
+          <h3>Dream House</h3>
+          <p>A full residential design package — room-by-room floor plans, structural and finish details, and the front elevation — carried from concept through to construction-ready plates. Click through the photo above to see every plate.</p>
+          <ul class="tag-list">
+            <li>AutoCAD</li>
+          </ul>
+        </article>
+
+        <article class="project-card project-card--placeholder">
+          <div class="project-card__thumb" aria-hidden="true"><i class="ph ph-flow-arrow"></i></div>
+          <h3>GoHighLevel &amp; n8n</h3>
+          <p>No Project here yet — I'm currently exploring how GoHighLevel and n8n work. Once I've shipped a real automation build, it'll replace this card.</p>
+          <ul class="tag-list">
+            <li>GoHighLevel</li><li>n8n</li>
+          </ul>
+          <span class="project-card__status"><i class="ph ph-compass" aria-hidden="true"></i> Exploring</span>
+        </article>
+      </div>
+
+      <div class="projects-cta">
+        <p>Interested in collaborating or learning more about these projects?</p>
+        <a class="btn btn--gradient js-open-contact" href="#contact">Let's Discuss Your Project</a>
+      </div>
+    </section>
+
+    <!-- ---------- TESTIMONIALS ---------- -->
+    <section id="testimonials" class="section" aria-labelledby="testimonials-heading">
+      <p class="section__kicker">Testimonials</p>
+      <h2 id="testimonials-heading" class="section__title">What people say</h2>
+      <p class="section__intro">Nothing here yet — this fills in as soon as a client or colleague sends a quote worth sharing.</p>
+
+      <div class="testimonial-card testimonial-card--placeholder">
+        <i class="ph ph-quotes" aria-hidden="true"></i>
+        <p>[Add a short quote from a client, colleague, or instructor here — what they asked for and how it went.]</p>
+        <p class="testimonial-card__attribution">[Name, role/company]</p>
+      </div>
+    </section>
+
+    <!-- ---------- SERVICES ---------- -->
+    <section id="services" class="section" aria-labelledby="services-heading">
+      <p class="section__kicker">Services</p>
+      <h2 id="services-heading" class="section__title">What I build</h2>
+      <p class="section__intro">Adjust these to match what you actually offer.</p>
+
+      <div class="service-list">
+        <div class="service">
+          <i class="ph ph-flow-arrow service__icon" aria-hidden="true"></i>
+          <div>
+            <h3>GoHighLevel automation</h3>
+            <p>Pipelines, workflows and follow-up sequences that keep leads from going cold.</p>
+          </div>
+        </div>
+        <div class="service">
+          <i class="ph ph-share-network service__icon" aria-hidden="true"></i>
+          <div>
+            <h3>n8n workflows</h3>
+            <p>Connecting the tools you already use so data moves without anyone copy-pasting it.</p>
+          </div>
+        </div>
+        <div class="service">
+          <i class="ph ph-robot service__icon" aria-hidden="true"></i>
+          <div>
+            <h3>AI agents &amp; assistants</h3>
+            <p>Task-specific agents built with Claude and Codex for support, research and internal tools.</p>
+          </div>
+        </div>
+        <div class="service">
+          <i class="ph ph-browser service__icon" aria-hidden="true"></i>
+          <div>
+            <h3>Website design &amp; development</h3>
+            <p>Fast, accessible, SEO-ready sites — from a single landing page to a full site.</p>
+          </div>
+        </div>
+        <div class="service">
+          <i class="ph ph-ruler service__icon" aria-hidden="true"></i>
+          <div>
+            <h3>AutoCAD &amp; SketchUp drafting</h3>
+            <p>Technical drawings and 3D models for concepts that need to be built for real.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- SKILLS ---------- -->
+    <section id="skills" class="section" aria-labelledby="skills-heading">
+      <p class="section__kicker">Skills</p>
+      <h2 id="skills-heading" class="section__title">Technical Skills</h2>
+      <p class="section__intro">Tools and skills I bring to web, automation and design work — self-rated based on how much real, hands-on experience I have with each.</p>
+
+      <div class="skills-grid">
+        <div class="skill-category">
+          <p class="skill-category__title"><i class="ph ph-code" aria-hidden="true"></i> Web Development</p>
+          <ul class="skill-list">
+            <li>
+              <div class="skill-row"><span><i class="ph ph-browser" aria-hidden="true"></i> Web Design &amp; Development</span><span class="skill-pct">90%</span></div>
+              <div class="skill-bar"><div class="skill-bar__fill" style="width:90%"></div></div>
+            </li>
+            <li>
+              <div class="skill-row"><span><i class="ph ph-magnifying-glass" aria-hidden="true"></i> SEO</span><span class="skill-pct">75%</span></div>
+              <div class="skill-bar"><div class="skill-bar__fill" style="width:75%"></div></div>
+            </li>
+            <li>
+              <div class="skill-row"><span><i class="ph ph-plug" aria-hidden="true"></i> API</span><span class="skill-pct">65%</span></div>
+              <div class="skill-bar"><div class="skill-bar__fill" style="width:65%"></div></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <p class="skill-category__title"><i class="ph ph-robot" aria-hidden="true"></i> Automation &amp; AI</p>
+          <ul class="skill-list">
+            <li>
+              <div class="skill-row"><span><i class="ph ph-flag-checkered" aria-hidden="true"></i> GoHighLevel</span><span class="skill-pct">40%</span></div>
+              <div class="skill-bar"><div class="skill-bar__fill" style="width:40%"></div></div>
+            </li>
+            <li>
+              <div class="skill-row"><span><i class="ph ph-flow-arrow" aria-hidden="true"></i> n8n</span><span class="skill-pct">40%</span></div>
+              <div class="skill-bar"><div class="skill-bar__fill" style="width:40%"></div></div>
+            </li>
+            <li>
+              <div class="skill-row"><span><i class="ph ph-lightning" aria-hidden="true"></i> Low-Code Platforms</span><span class="skill-pct">40%</span></div>
+              <div class="skill-bar"><div class="skill-bar__fill" style="width:40%"></div></div>
+            </li>
+            <li>
+              <div class="skill-row"><span><i class="ph ph-gear" aria-hidden="true"></i> Automation</span><span class="skill-pct">50%</span></div>
+              <div class="skill-bar"><div class="skill-bar__fill" style="width:50%"></div></div>
+            </li>
+            <li>
+              <div class="skill-row"><span><i class="ph ph-terminal-window" aria-hidden="true"></i> Codex</span><span class="skill-pct">70%</span></div>
+              <div class="skill-bar"><div class="skill-bar__fill" style="width:70%"></div></div>
+            </li>
+            <li>
+              <div class="skill-row"><span><i class="ph ph-sparkle" aria-hidden="true"></i> Claude</span><span class="skill-pct">70%</span></div>
+              <div class="skill-bar"><div class="skill-bar__fill" style="width:70%"></div></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <p class="skill-category__title"><i class="ph ph-ruler" aria-hidden="true"></i> CAD &amp; Design</p>
+          <ul class="skill-list">
+            <li>
+              <div class="skill-row"><span><i class="ph ph-ruler" aria-hidden="true"></i> AutoCAD</span><span class="skill-pct">85%</span></div>
+              <div class="skill-bar"><div class="skill-bar__fill" style="width:85%"></div></div>
+            </li>
+            <li>
+              <div class="skill-row"><span><i class="ph ph-cube" aria-hidden="true"></i> SketchUp</span><span class="skill-pct">75%</span></div>
+              <div class="skill-bar"><div class="skill-bar__fill" style="width:75%"></div></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <p class="skill-category__title"><i class="ph ph-briefcase" aria-hidden="true"></i> Productivity &amp; Security</p>
+          <ul class="skill-list">
+            <li>
+              <div class="skill-row"><span><i class="ph ph-app-window" aria-hidden="true"></i> Microsoft 365</span><span class="skill-pct">80%</span></div>
+              <div class="skill-bar"><div class="skill-bar__fill" style="width:80%"></div></div>
+            </li>
+            <li>
+              <div class="skill-row"><span><i class="ph ph-file-doc" aria-hidden="true"></i> Office 365</span><span class="skill-pct">80%</span></div>
+              <div class="skill-bar"><div class="skill-bar__fill" style="width:80%"></div></div>
+            </li>
+            <li>
+              <div class="skill-row"><span><i class="ph ph-file-text" aria-hidden="true"></i> WPS Office</span><span class="skill-pct">70%</span></div>
+              <div class="skill-bar"><div class="skill-bar__fill" style="width:70%"></div></div>
+            </li>
+            <li>
+              <div class="skill-row"><span><i class="ph ph-shield-check" aria-hidden="true"></i> Cybersecurity</span><span class="skill-pct">55%</span></div>
+              <div class="skill-bar"><div class="skill-bar__fill" style="width:55%"></div></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- ABOUT ---------- -->
+    <section id="about" class="section" aria-labelledby="about-heading">
+      <p class="section__kicker">About</p>
+      <h2 id="about-heading" class="section__title">Who's building this</h2>
+
+      <div class="about-layout">
+        <div class="about-layout__photo">
+          <img src="assets/profile.jpg" alt="John Kerby S. Banatlao">
+        </div>
+        <div class="about-layout__text">
+          <p>My journey started with Computer Engineering, where I first developed my skills in AutoCAD and SketchUp. During my OJT, I got the opportunity to explore web development, and that experience sparked my interest in creating digital solutions. As I continued learning, I became curious about how automation and AI could make everyday processes faster and more efficient.</p>
+          <p>Right now, I'm challenging myself to go beyond traditional web development by learning automation and AI tools like GoHighLevel (GHL) and n8n. I enjoy figuring out how different tools can work together to automate tasks and solve real problems. I'm also exploring Codex and Claude to help me learn, build, and improve faster. For me, it's not just about learning new tools — it's about discovering better ways to turn ideas into useful solutions.</p>
+
+          <ul class="credential-list">
+            <li><i class="ph ph-seal-check" aria-hidden="true"></i> Huawei Developers Training</li>
+            <li><i class="ph ph-seal-check" aria-hidden="true"></i> Basic Occupational Safety and Health, Certified Safety Officer 1 Seminar</li>
+            <li><i class="ph ph-seal-check" aria-hidden="true"></i> Basic Occupational Safety and Health, Certified Safety Officer 2 Seminar</li>
+            <li><i class="ph ph-seal-check" aria-hidden="true"></i> Ethical Hacking Essentials (EHE)</li>
+            <li><i class="ph ph-seal-check" aria-hidden="true"></i> Leadership Awardee</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- CONTACT ---------- -->
+    <footer class="footer">
+      <p>&copy; <span id="year"></span> John Kerby S. Banatlao. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <!-- Mobile-only bottom tab bar — primary nav within thumb reach on small screens -->
+  <nav class="bottom-nav" aria-label="Primary mobile">
+    <a href="#home" class="bottom-nav__link is-active" data-section="home"><i class="ph ph-house" aria-hidden="true"></i><span>Home</span></a>
+    <a href="#projects" class="bottom-nav__link" data-section="projects"><i class="ph ph-folder-simple" aria-hidden="true"></i><span>Projects</span></a>
+    <a href="#services" class="bottom-nav__link" data-section="services"><i class="ph ph-wrench" aria-hidden="true"></i><span>Services</span></a>
+    <a href="#about" class="bottom-nav__link" data-section="about"><i class="ph ph-user" aria-hidden="true"></i><span>About</span></a>
+    <a href="#contact" class="bottom-nav__link js-open-contact" data-section="contact"><i class="ph ph-envelope-simple" aria-hidden="true"></i><span>Contact</span></a>
+  </nav>
+
+  <!-- Full-size image viewer for project galleries -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+    <button type="button" class="lightbox__close" id="lightboxClose" aria-label="Close image viewer"><i class="ph ph-x" aria-hidden="true"></i></button>
+    <button type="button" class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous image"><i class="ph ph-caret-left" aria-hidden="true"></i></button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="">
+    <button type="button" class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next image"><i class="ph ph-caret-right" aria-hidden="true"></i></button>
+    <p class="lightbox__caption" id="lightboxCaption"></p>
+  </div>
+
+  <!-- Contact modal — opened from the sidebar "Contact" link, mobile tab bar, and the projects CTA -->
+  <div class="modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contact-heading" hidden>
+    <div class="modal__panel">
+      <button type="button" class="modal__close" id="contactModalClose" aria-label="Close contact form"><i class="ph ph-x" aria-hidden="true"></i></button>
+
+      <p class="section__kicker">Contact</p>
+      <h2 id="contact-heading" class="section__title">Send Message</h2>
+
+      <div class="direct-contact">
+        <a class="direct-contact__link" href="mailto:kerbysilva163@gmail.com">
+          <i class="ph ph-envelope-simple" aria-hidden="true"></i>
+          <span>
+            <strong>Email</strong>
+            kerbysilva163@gmail.com
+          </span>
+        </a>
+        <a class="direct-contact__link" href="tel:+639216432444">
+          <i class="ph ph-phone" aria-hidden="true"></i>
+          <span>
+            <strong>Phone</strong>
+            +63 921 643 2444
+          </span>
+        </a>
+      </div>
+
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/mwlkrzjn" method="POST" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" autocomplete="name" placeholder="Your Name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="Your Email" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="Subject" required>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn--gradient btn--block"><i class="ph ph-paper-plane-tilt" aria-hidden="true"></i> Send Message</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="pro-tip">
+        <p class="pro-tip__title"><i class="ph ph-lightbulb-filament" aria-hidden="true"></i> Pro Tip</p>
+        <p>Include details about your project timeline, budget, and specific requirements for a faster response!</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js?v=11" defer></script>
+</body>
+</html>
